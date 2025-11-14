@@ -24,8 +24,9 @@ const categoria = categorias.find(c => c.id === p.categoriaId);
 return {
 ...p,
 categoria: categoria ? categoria.nombre : 'Sin categoría'
-})
+}
 });
+};
 exports.listar = () => leer();
 exports.buscarPorId = (id) => leer().find(p => p.id === id);
 exports.crear = (nuevo) => {
