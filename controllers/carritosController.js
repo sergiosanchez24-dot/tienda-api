@@ -1,13 +1,13 @@
 const carritosService = require('../services/carritosService');
 
 exports.obtenerTodos = (req, res) => {
-    // Usamos la nueva función enriquecida
+    // Nueva función enriquecida
     const carritos = carritosService.listarConProductos();
     res.json(carritos);
 };
 
 exports.obtenerPorId = (req, res) => {
-    // Usamos la nueva función enriquecida
+    // Nueva función enriquecida
     const carrito = carritosService.buscarPorIdConProductos(parseInt(req.params.id));
     carrito ? res.json(carrito) : res.status(404).json({ mensaje: 'No encontrado' });
 };

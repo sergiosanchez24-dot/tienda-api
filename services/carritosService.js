@@ -1,7 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-
-// Rutas de archivos JSON
 const rutaCarritos = path.join(__dirname, '../data/carritos.json');
 const rutaProductos = path.join(__dirname, '../data/productos.json');
 
@@ -16,17 +14,13 @@ function guardar(datos) {
     fs.writeFileSync(rutaCarritos, JSON.stringify(datos, null, 2));
 }
 
-/**
- * Lista todos los carritos con información completa de productos (Datos enriquecidos)
- * @returns {Array} Array de carritos con productos detallados
- */
 exports.listarConProductos = () => {
     const carritos = leerJSON(rutaCarritos);
     const productos = leerJSON(rutaProductos);
 
     // Enriquecemos cada carrito con la información completa de sus productos
     return carritos.map(carrito => {
-        // FIX: Usamos (carrito.productos || []) para manejar carritos sin la propiedad 'productos'
+        // Usamos (carrito.productos || []) para manejar carritos sin la propiedad 'productos'
         const productosDetalle = (carrito.productos || []).map(productoId => {
             const producto = productos.find(p => p.id === productoId);
             return producto || null;
@@ -39,17 +33,10 @@ exports.listarConProductos = () => {
     });
 };
 
-/**
- * Busca un carrito por ID con productos enriquecidos
- * @param {number} id - ID del carrito
- * @returns {Object|null} Carrito encontrado o null
- */
 exports.buscarPorIdConProductos = (id) => {
     const carritos = exports.listarConProductos();
     return carritos.find(c => c.id === id) || null;
 };
-
-// **Funciones CRUD existentes:**
 
 exports.listar = () => leerJSON(rutaCarritos);
 exports.buscarPorId = (id) => leerJSON(rutaCarritos).find(p => p.id === id);
