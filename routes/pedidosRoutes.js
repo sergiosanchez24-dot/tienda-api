@@ -2,11 +2,11 @@
 
 const express = require('express');
 const router = express.Router();
-const productosController = require('../controllers/pedidosController');
-router.get('/', productosController.obtenerTodos);
-router.get('/:id', productosController.obtenerPorId);
-router.post('/', productosController.crear);
-router.put('/:id', productosController.actualizar);
-router.delete('/:id', productosController.eliminar);
+const pedidosController = require('../controllers/pedidosController');
+router.get('/', pedidosController.obtenerTodos);
+router.get('/:id', pedidosController.obtenerPorId);
+router.post('/', pedidosController.crear);
+router.put('/:id', pedidosController.actualizar);
+router.delete('/:id', pedidosController.eliminar);
 module.exports = router;
 //Las demás rutas (categoriasRoutes.js, clientesRoutes.js, etc.) tendrán la
