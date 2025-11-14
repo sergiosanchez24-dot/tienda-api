@@ -1,3 +1,9 @@
 [
-{ "id": 1, "clienteId": 1, "fecha": "2025-10-19", "total": 79.98 }
+  { 
+    "id": 1, 
+    "clienteId": 1, 
+    "fecha": "2025-10-19", 
+    "total": 79.98,
+    "productos": [1, 2]  
+  }
 ]
